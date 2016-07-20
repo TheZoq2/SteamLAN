@@ -1,9 +1,14 @@
 import urllib.request;
 import json;
 
+apiKey = "8994027C0B161154DB8F7B72E6C57E80"
+
+def getAPIKey():
+    with open("apiKey") as f:
+        return f.readline().replace('\n', "")
 
 def getUserGames(userID):
-    requestString = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={}&steamid={}&format=json".format(apiKey, userID);
+    requestString = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={}&steamid={}&format=json".format(getAPIKey(), userID);
     
     lines = urllib.request.urlopen(requestString) 
     result = ""
